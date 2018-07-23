@@ -1,0 +1,95 @@
+
+\chapter{Travaux existants dans la littérature}
+\section{Méthodes basées sur les modèles (template-based)}
+Ces méthodes sont basées sur de modèles prédéfinis utilisant la distribution spectral de l'énergie. Elles supposent un ensemble de modèles de galaxies et tire le modèle le plus adapté et ensuite deduire le redshift \cite{Narciso, Gabriel, photoSED}.\\ 
+Cette méthode de mesure du redshift est biaisée (seulement les galaxies) et ainsi entraîne des erreurs dans la prédictions des erreurs. À partir de template-based on peut déterminer d'autres composants physiques que le redshift \cite{meuphirim}. Plusieurs tentatives de l'amélioration de la précision du redshift de galaxies ont été faites, ci-dessous un tableau des certains travaux intéressants de la littérature.
+\begin{table}[!ht]
+\centering    
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline paper & database & type/SED TEMP & $\mu(Z_{norm})$ & $std(Z_{norm})$ & $|Z_norm|\ge0.15 (\%)$\\
+    \hline 
+    \multirow{2}{1cm}{\cite{sql}} & PHAT & GALAXY/LP Flat Err & 0.0013 & 0.0445 & 9.88  \\
+    \cline{2-6}
+     & CAPR & Galaxy/LP HDF Err & -0.0081 & 0.0490 & 7.65\\
+    \hline
+    \multirow{2}{1cm}{\cite{Narciso}} & \multirow{2}{1cm}{HDF} & GALAXY/BPZ & 0.08 & &  \\
+    \cline{3-6} 
+     &  & Galaxy/ML & 0.10 &  & \\
+    \hline
+    \cite{photoredSDSS} & SDSS DR12 & GALAXY & 0.0000584 & 0.0205& 4.11\\
+    \hline
+    
+    
+    
+    %&  \\
+    %& 
+\end{tabular}
+    \caption{Résultat concernant la méthode basée modèle}
+    \label{base_model}
+\end{table}
+
+Dans \cite{Narciso} deux modèles probabilistes ont été utilisés: maximum likelihood (ML) et le modèle bayesian (BPZ). 
+
+Dans \cite{sql}, l'analyse est faite directement sur les différentes bases de données sans les déplacer. Cela permet non seulement d'éviter un télé-chargement long des données et l'obligation d'avoir un très grand espace de stockage, mais également de profiter de la bonne structuration de bases de données relationnelles. Ils ont également fait l'analyse sur multi-bandes variés, ce qui ne permet de faire que la méthode d'analyse basée modèle. Deux types de modèles de distribution l'énergie spectrale (SED) de galaxies ont été utilisés (BPZ et LP). Le modèle Bayesian a été sélectionné pour l'analyse. 
+
+\cite{photoredSDSS} est une méthode hybride, utilisant en même temps la régression (méthode empirique) et l'adaptation à un modèle de galaxies (méthode basée modèle). Cette méthode bat toutes les autres mais elle est biaisée car elle s'est focalisée uniquement sur les galaxies.
+
+\section{Méthodes empiriques}
+Les méthodes empiriques tentent de réduire l'erreur de prédiction du redshift par les méthodes statistiques et machines learning. Ces méthodes ont besoin des données étiquetées (chacun de vecteurs dans l'ensemble d'apprentissage doit être étiqueté par son redshift). Ce qui oblige à fusionner les données de la photométrie et spectroscopiques des mêmes objets (dans catalog\footnote{http://skyserver.sdss.org/dr13/en/help/browser/browser.aspx}, les objets avec les mêmes objid).La proportionnalité des images étiquetées par leur redshift est très petite par rapport à celles non étiquetées.  
+
+\begin{table}[!ht]
+\centering    
+\begin{tabular}{|c|c|c|c|c|c|}
+    \hline paper & database & type/method & $\mu(Z_{norm})$ & $std(Z_{norm})$ & $|Z_norm|\ge0.15 (\%)$\\
+    
+    \hline 
+    \cite{stack} & SDSS DR12 & Galaxy/AdaBoost stacking & 0.0008 $(\mu^{50})$ & 0.0248 $(\sigma_{68})$ & 0.733 \\
+    \hline
+    
+    \multirow{2}{1cm}{\cite{ben}} & \multirow{2}{1cm}{SDSS DR 10} & Galaxy/DNNs & 0.00 & 0.03 $(\sigma_{68})$ & 1.71 \\
+    \cline{3-6}
+    & & AdaBoost & $-0.001$ & 0.03 $(\sigma_{68})$ & 1.56\\
+    
+    \hline
+        \multirow{2}{1cm}{\cite{meuphirim}} & \multirow{2}{1cm}{SDSS DR 13}  & All type/DNN & -0.0255009 & 0.152743 & 9.83078\\
+        \cline{3-6}
+        & & All type/XGB & 0.00149561 & 0.168866 & 10.7685 \\
+    \hline
+        \cite{isanto} & SDSS DR9 & All type/DCMDN & -0.007 & 0.014 & \\
+    \hline
+    
+\end{tabular}
+    \caption{Résultats concernant la méthode empirique}
+    \label{empirique}
+\end{table}
+
+Dans \cite{adrian}, le réseau de neurones artificiel a été testé sur les données photométries sous forme de vecteurs (magnitudes et couleurs) de type galaxy provenant de SDSS et obtenir une précision rms (root mean square) de 0.0238.\\
+Dans le papier \cite{stack} plusieurs modèles et architectures ont été testé et le meilleur parmi est le AdaBoost empilé. AdaBoost fait partir de la classe des algorithmes d'apprentissage de boosting qui fait l'apprentissage sur plusieurs modèles hierarchiquement en augmentant à chaque nouveau la distribution des éléments mal ajustés. Mais dans \cite{stack} on fait en plus du boosting mais également un empilement de modèles renforcés. Ces modèles renforcés sont hiérarchisés et chaque modèle suivant tient compte du redshift prédit du precedant.\\
+Ben Hoyle, dans \cite{ben} utilise les réseaux de neurones profonds et AdaBoost pour estimer le redshift à partir des images provenant de la collecte SDSS DR 10. Dans \cite{meuphirim}, XGBoost et MLP a été utilisé pour estimer le redshift sans pré-classification (Galaxies, étoiles et quasars confondus)et diminuer ainsi  le biais d'estimation. \cite{isanto} utilise la mixture de densité gaussian et le réseau convolutif. À partir des réseaux convolutifs, un ensemble des paramètres de la distribution gaussian sont estimés, ainsi il obtient la meilleure deviation (0.014) standard et une erreur moyenne de -0.007 de l'estimation du redshift. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

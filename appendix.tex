@@ -1,0 +1,19 @@
+
+\textbf{For Galaxy}\\
+SELECT TOP 200000
+p.objid,s.rowc\_u,s.rowc\_i,s.rowc\_z,s.rowc\_g,s.rowc\_r,s.colc\_u,s.colc\_i,s.colc\_z,s.colc\_g,s.colc\_r,p.rerun,p.run,p.camcol,p.field,p.z as redshift,p.class
+FROM SpecPhoto AS p
+   JOIN PhotoPrimary AS s ON s.objid = p.objid
+where p.class = 'GALAXIES'\\
+\textbf{For Quazars}\\
+SELECT TOP 200000
+p.objid,s.rowc\_u,s.rowc\_i,s.rowc\_z,s.rowc\_g,s.rowc\_r,s.colc\_u,s.colc\_i,s.colc\_z,s.colc\_g,s.colc\_r,p.rerun,p.run,p.camcol,p.field,p.z as redshift,p.class
+FROM SpecPhoto AS p
+   JOIN PhotoPrimary AS s ON s.objid = p.objid
+where p.class = 'QSO'\\
+\textbf{For stars}\\
+SELECT TOP 200000
+p.objid,s.rowc\_u,s.rowc\_i,s.rowc\_z,s.rowc\_g,s.rowc\_r,s.colc\_u,s.colc\_i,s.colc\_z,s.colc\_g,s.colc\_r,p.rerun,p.run,p.camcol,p.field,p.z as redshift,p.class
+FROM SpecPhoto AS p
+   JOIN PhotoPrimary AS s ON s.objid = p.objid
+where p.class = 'STAR'

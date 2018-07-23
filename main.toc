@@ -1,0 +1,71 @@
+\boolfalse {citerequest}\boolfalse {citetracker}\boolfalse {pagetracker}\boolfalse {backtracker}\relax 
+\babel@toc {french}{}
+\babel@toc {french}{}
+\defcounter {refsection}{0}\relax 
+\contentsline {part}{I\hspace {1em}Photo-z estimation by Deep learning \\ \relax \fontsize {12}{14}\selectfont \textit {<<Aproach by images>>}}{3}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {1}Travaux existants dans la litt\IeC {\'e}rature}{7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.1}M\IeC {\'e}thodes bas\IeC {\'e}es sur les mod\IeC {\`e}les (template-based)}{7}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {1.2}M\IeC {\'e}thodes empiriques}{8}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {2}Mod\IeC {\`e}les de l'apprentissage automatique}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.1}R\IeC {\'e}seau de neurones artificiels}{10}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.1}Perception multi-couches (MLP)}{11}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.1.2}Auto-Encoder}{12}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.2}R\IeC {\'e}seau de neurones convolutifs (CNN)}{13}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.1}Couche convolutive}{15}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Tiled convolutional network (TCN)}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Transposed convolution ou Deconvolution (TC)}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Dilated convolutional neural}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Network in network (NiN)}{16}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Inception module}{17}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.2.2}Couche d'agr\IeC {\'e}gation (pooling)}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.3}Boosting}{18}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {2.4}Apprentissage profond}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {2.4.1}Apprentissage par r\IeC {\'e}tro-propagation}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{Optimisation}{19}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{R\IeC {\'e}gularisation}{20}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats et discussion}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.1}Donn\IeC {\'e}es}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.1}Source et nature de donn\IeC {\'e}es}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{SDSS(Sloan Digital Sky Survey IV)}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{DR13 (database release version 13)}{21}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.1.2}Pr\IeC {\'e}-traitement sur les images}{22}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.2}Configurations techniques}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.3}Configuration des mod\IeC {\`e}le}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.1}CNN (type: inception module)}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {3.3.2}Boosting (type: xgboost)}{23}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.4}Exp\IeC {\'e}rimentions avec CNN}{24}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.5}Exp\IeC {\'e}rimentions avec XGBoost}{24}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {3.6}Discussion}{24}

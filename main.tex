@@ -1,0 +1,66 @@
+\documentclass[french]{report}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{babel}
+\usepackage[autolanguage]{numprint}
+\usepackage[backend=bibtex]{biblatex}
+\usepackage{csquotes}
+\addbibresource{mabib.bib}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{float} 
+\usepackage{multirow}
+
+\begin{document}
+
+\begin{titlepage}
+    \begin{center}
+        \LARGE \textbf{Photo-z estimation by Deep learning}\\
+        \large \textit{<<Aproach by images>>}
+    \end{center}
+    
+    \begin{center}
+        \Large \textbf{Présenté par:} \textit{Ousmane Issa}\\
+        \Large \textbf{Sous la direction de:} \textit{  Pr. Engelbert Mephu Nguifo}
+    \end{center}
+\end{titlepage}
+
+\tableofcontents
+
+
+\section*{\textit{Résumé:}}
+
+\section*{\textit{Abstract:}}
+
+
+\include{introduction_resume_abstract}
+
+\part{Photo-z estimation by Deep learning \\
+        \large \textit{<<Aproach by images>>}}
+
+\include{context_part1}
+\include{existant_part1}
+\include{modeles}
+\include{experimentation_part1}
+
+%\part{Supernovae classification by time series}
+%\include{context_part2}
+%\include{existant_part2}
+%\include{donnees_part2}
+%\include{shapelet}
+%\include{experiments}
+
+
+
+\chapter*{Conclusion et perspectifs}
+
+\chapter*{Appendix}
+\include{appendix}
+
+
+\printbibliography
+
+
+
+\end{document}
