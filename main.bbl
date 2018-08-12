@@ -17,6 +17,105 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
+  \entry{sax}{article}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \field{title}{A Symbolic Representation of Time Series, with Implications
+  for Streaming Algorithms}
+  \endentry
+
+  \entry{lsst}{article}{}
+    \true{moreauthor}
+    \name{author}{10}{}{%
+      {{hash=APA}{%
+         family={Abell},
+         familyi={A\bibinitperiod},
+         given={P.\bibnamedelima A.},
+         giveni={P\bibinitperiod\bibinitdelim A\bibinitperiod},
+      }}%
+      {{hash=AJ}{%
+         family={Allison},
+         familyi={A\bibinitperiod},
+         given={J.},
+         giveni={J\bibinitperiod},
+      }}%
+      {{hash=ASF}{%
+         family={Anderson},
+         familyi={A\bibinitperiod},
+         given={S.\bibnamedelima F.},
+         giveni={S\bibinitperiod\bibinitdelim F\bibinitperiod},
+      }}%
+      {{hash=AJR}{%
+         family={Andrew},
+         familyi={A\bibinitperiod},
+         given={J.\bibnamedelima R.},
+         giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod},
+      }}%
+      {{hash=AJRP}{%
+         family={Angel},
+         familyi={A\bibinitperiod},
+         given={J.\bibnamedelima R.\bibnamedelima P.},
+         giveni={J\bibinitperiod\bibinitdelim R\bibinitperiod\bibinitdelim
+  P\bibinitperiod},
+      }}%
+      {{hash=AL}{%
+         family={Armus},
+         familyi={A\bibinitperiod},
+         given={L.},
+         giveni={L\bibinitperiod},
+      }}%
+      {{hash=AD}{%
+         family={Arnett},
+         familyi={A\bibinitperiod},
+         given={D.},
+         giveni={D\bibinitperiod},
+      }}%
+      {{hash=ASJ}{%
+         family={Asztalos},
+         familyi={A\bibinitperiod},
+         given={S.\bibnamedelima J.},
+         giveni={S\bibinitperiod\bibinitdelim J\bibinitperiod},
+      }}%
+      {{hash=ATS}{%
+         family={Axelrod},
+         familyi={A\bibinitperiod},
+         given={T.\bibnamedelima S.},
+         giveni={T\bibinitperiod\bibinitdelim S\bibinitperiod},
+      }}%
+      {{hash=BS}{%
+         family={Bailey},
+         familyi={B\bibinitperiod},
+         given={S},
+         giveni={S},
+      }}%
+    }
+    \strng{namehash}{APA+1}
+    \strng{fullhash}{APAAJASFAJRAJRPALADASJATSBS+1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \verb{eprint}
+    \verb 0912.0201
+    \endverb
+    \field{title}{LSST Science Book, Version 2.0}
+    \field{eprinttype}{arXiv}
+    \field{year}{2009}
+  \endentry
+
+  \entry{knn}{article}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{A}
+    \field{sortinithash}{A}
+    \verb{doi}
+    \verb 10.1109/FSKD.2010.5569740
+    \endverb
+    \field{title}{An adaptive k-nearest neighbor algorithm}
+    \field{journaltitle}{IEEE}
+    \field{year}{2010}
+  \endentry
+
   \entry{photoredSDSS}{article}{}
     \name{author}{2}{}{%
       {{hash=BR}{%
@@ -133,6 +232,18 @@
   NEURAL NETWORKS}
     \field{journaltitle}{arXiv:astro-ph/0311058v2}
     \field{year}{2004}
+  \endentry
+
+  \entry{rl}{article}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{C}
+    \field{sortinithash}{C}
+    \verb{doi}
+    \verb https://doi.org/10.1016/j.jfo.2013.05.008
+    \endverb
+    \field{title}{Comprendre la régression logistique}
+    \field{journaltitle}{Science direct}
+    \field{year}{2013}
   \endentry
 
   \entry{isanto}{article}{}
@@ -369,6 +480,13 @@
     \field{year}{2016}
   \endentry
 
+  \entry{ramps}{misc}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{H}
+    \field{sortinithash}{H}
+  \field{title}{https://github.com/ramp-kits/supernovae/blob/master/PLAsTiCC_starting_kit.ipynb}
+  \endentry
+
   \entry{pool1}{article}{}
     \name{author}{2}{}{%
       {{hash=HA}{%
@@ -394,6 +512,19 @@
     \field{title}{Complex cell pooling and the statistics of natural images}
     \field{journaltitle}{Network: Computation in Neural Systems}
     \field{year}{2007}
+  \endentry
+
+  \entry{decisionTree}{article}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{I}
+    \field{sortinithash}{I}
+    \verb{doi}
+    \verb https://doi.org/10.1007/BF00116251
+    \endverb
+    \field{note}{Print ISSN : 0885-6125}
+    \field{title}{Introduction of decision trees}
+    \field{journaltitle}{Kluwer Academic Publishers}
+    \field{year}{1985}
   \endentry
 
   \entry{batch}{article}{}
@@ -631,6 +762,17 @@
     \field{year}{2013}
   \endentry
 
+  \entry{rcnn}{article}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{M}
+    \field{sortinithash}{M}
+    \field{note}{arXiv:1703.06870v3}
+    \field{title}{Mask R-CNN}
+    \field{journaltitle}{Computer Vision (ICCV), 2017 IEEE International
+  Conference}
+    \field{year}{2017}
+  \endentry
+
   \entry{tcnn1}{article}{}
     \name{author}{5}{}{%
       {{hash=NJ}{%
@@ -859,6 +1001,19 @@
     \field{year}{2011}
   \endentry
 
+  \entry{randomForest}{article}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{R}
+    \field{sortinithash}{R}
+    \verb{doi}
+    \verb https://doi.org/10.1023/A:1010933404324
+    \endverb
+    \field{note}{Print ISSN: 0885-6125}
+    \field{title}{Random Forest}
+    \field{journaltitle}{Kluwer Academic Publishers}
+    \field{year}{2001}
+  \endentry
+
   \entry{stack}{article}{}
     \name{author}{2}{}{%
       {{hash=RRBKJMM}{%
@@ -970,6 +1125,44 @@
     \field{journaltitle}{Proceedings of the Advances in Neural Information
   Processing Systems (NIPS) Workshops}
     \field{year}{2016}
+  \endentry
+
+  \entry{ann1}{article}{}
+    \name{author}{4}{}{%
+      {{hash=SA}{%
+         family={Sriram},
+         familyi={S\bibinitperiod},
+         given={Aditya},
+         giveni={A\bibinitperiod},
+      }}%
+      {{hash=KS}{%
+         family={Kalra},
+         familyi={K\bibinitperiod},
+         given={Shivam},
+         giveni={S\bibinitperiod},
+      }}%
+      {{hash=TH}{%
+         family={Tizhoosh},
+         familyi={T\bibinitperiod},
+         given={H.R.},
+         giveni={H\bibinitperiod},
+      }}%
+      {{hash=RS}{%
+         family={Rahnamayan},
+         familyi={R\bibinitperiod},
+         given={Shahryar},
+         giveni={S\bibinitperiod},
+      }}%
+    }
+    \strng{namehash}{SA+1}
+    \strng{fullhash}{SAKSTHRS1}
+    \field{labelnamesource}{author}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{note}{arXiv:1710.01247v1 [cs.CV]}
+    \field{title}{Learning Autoencoded Radon Projections}
+    \field{year}{2017}
   \endentry
 
   \entry{sql}{article}{}
@@ -1153,6 +1346,25 @@
     \field{journaltitle}{Proceedings of the IEEE Conference on Computer Vision
   and Pattern Recognition (CVPR)}
     \field{year}{2016}
+  \endentry
+
+  \entry{bazin}{article}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{note}{arXiv:0904.1066v}
+    \field{title}{The Core-collapse rate from the Supernova Legacy Survey}
+    \field{year}{2009}
+  \endentry
+
+  \entry{timereview}{article}{}
+    \field{labeltitlesource}{title}
+    \field{sortinit}{T}
+    \field{sortinithash}{T}
+    \field{note}{DOI 10.1007/s10618-016-0483-9}
+    \field{title}{The great time series classification bake off: a review and
+  experimental evaluation of recent algorithmic advances}
+    \field{journaltitle}{Data Min Knowl Disc (2017) 31:606–660}
   \endentry
 
   \entry{transcd5}{article}{}

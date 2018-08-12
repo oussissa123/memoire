@@ -1,6 +1,5 @@
 This is BibTeX, Version 0.99dThe top-level auxiliary file: main.aux
 The style file: biblatex.bst
-A level-1 auxiliary file: introduction_resume_abstract.aux
 A level-1 auxiliary file: context_part1.aux
 A level-1 auxiliary file: existant_part1.aux
 A level-1 auxiliary file: modeles.aux
@@ -10,7 +9,5 @@ Database file #1: main-blx.bib
 Database file #2: mabib.bib
 Warning--I'm ignoring relu's extra "year" field
 --line 240 of file mabib.bib
-Warning--I didn't find a database entry for "autoencoder"
-Warning--I didn't find a database entry for "..."
 Biblatex version: 3.8
-(There were 3 warnings)
+(There was 1 warning)

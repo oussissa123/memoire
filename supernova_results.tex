@@ -1,0 +1,98 @@
+\documentclass{report}
+\usepackage[francais]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage[autolanguage]{numprint}
+\usepackage[backend=bibtex]{biblatex}
+\usepackage{csquotes}
+\addbibresource{mabib.bib}
+\usepackage{graphicx}
+\usepackage{wrapfig}
+\usepackage{lipsum}
+\usepackage{float} 
+\usepackage{multirow}
+\begin{document}
+	Les conventions suivantes sont adoptées pour présenter les résultats: \\
+	Accuracy sur l'ensemble de l'apprentissage est noté $A\_Train$, accuracy sur l'ensemble de test est noté $A\_Test$, le rappel de la classe c sur l'ensemble d'apprentissage est $R\_Train\_c$ et celui de test est noté $R\_Test\_c$ et $MML$ correspond au modèle de l'apprentissage automatique utilisé.  \\
+	
+	La taille de l'ensemble d'apprentissage est 1093 et celui du est 20190, 556 sont d'une classe et 537 d'une autre.
+	
+	\section*{SAX sans estimation des données manquantes sans hachage aléatoire}
+	
+	\begin{table}[H]
+		\begin{tabular} {|l|l|l|l|l|l|l|}
+		\hline	
+		$MML$&$A\_Train$ & $R\_Train\_0 $ & $R\_Train\_1$ & $A\_Test$ & $R\_Test\_0 $ & $R\_Test\_1$\\
+		AdBoost & 72.81449893390192 & 69.11111111111111 & 76.22950819672131 & 44.01261627285363 & 33.7636476000824 & 80.03861935795318 \\
+		\hline
+		GBoost & 97.01492537313433 & 95.33333333333334 & 98.5655737704918 & 46.52517908692398 & 39.511089747991484 & 71.18030412744389 \\
+		\hline
+		XGBoost & 77.39872068230277 & 72.0 & 82.37704918032787 & 42.50507858441142 & 31.216095584700952 & 82.18682114409847  \\
+		\hline
+		DTree & 97.01492537313433 & 99.55555555555556 & 94.67213114754098 & 46.34341922377846 & 38.99608597129712 & 72.16992517499396 \\ 
+		\hline
+		RForest & 94.3496801705757 & 92.22222222222223 & 96.31147540983606 & 42.55853736768952 & 31.772299663530866 & 80.47308713492637 \\
+		\hline			
+		\end{tabular}
+	\end{table}
+
+
+	\section*{SAX représentation sans estimation des données manquantes avec hachage aléatoire}
+	\begin{table}[H]
+		\begin{tabular} {|l|l|l|l|l|l|l|}
+			\hline
+			$MML$&$A\_Train$ & $R\_Train\_0 $ & $R\_Train\_1$ & $A\_Test$ & $R\_Test\_0 $ & $R\_Test\_1$\\	
+			AdBoost & 64.92537313432835 & 60.44444444444444 & 69.05737704918032 & 48.85598203784882 & 45.58126759596237 & 60.36688390055516 \\
+			\hline
+			GBoost & 82.51599147121536 & 76.22222222222223 & 88.31967213114754 & 49.02170426601091 & 46.54260797912518 & 57.735940139995165 \\
+			\hline
+			XGBoost & 80.0639658848614 & 77.55555555555556 & 82.37704918032787 & 49.395915748957556 & 46.57694156423814 & 59.30485155684286 \\
+			\hline
+			DTree & 82.51599147121536 & 89.33333333333333 & 76.22950819672131 & 56.928258312840796 & 60.413376364760005 & 44.677769732078204 \\
+			\hline
+			RForest & 81.13006396588486 & 79.77777777777779 & 82.37704918032787 & 48.85063615952101 & 45.91087001304676 & 59.184166063239196 \\		
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\section*{SAX représentation avec estimation des données manquantes avec hachage aléatoire}
+		\begin{table}[H]
+		\begin{tabular} {|l|l|l|l|l|l|l|}
+			\hline
+			$MML$&$A\_Train$ & $R\_Train\_0 $ & $R\_Train\_1$ & $A\_Test$ & $R\_Test\_0 $ & $R\_Test\_1$\\
+			DTree & 64.77584629460202 & 94.97206703910615 & 35.61151079136691 & 64.1491679873217 & 73.47798340778557 & 31.822202565236623 \\
+			\hline
+			xgboost & 64.77584629460202 & 92.92364990689012 & 37.589928057553955 & 64.13431061806656 & 72.99936183790683 & 33.41441839893852 \\
+			\hline
+			AdBoost & 59.92680695333943 &  89.57169459962756 & 31.294964028776977 & 65.18423137876387 &  74.71601786853861 & 32.15391419725785 \\
+			\hline
+			GBoost & 64.77584629460202 & 91.62011173184358 & 38.84892086330935 & 63.03486529318542 & 71.05296745373325 & 35.24988942945599 \\			
+			\hline
+		\end{tabular}
+	\end{table}
+
+	\section*{Les paramètres de la fonction de Bazin comme caractéristiques}
+		\begin{table}[H]
+		\begin{tabular} {|l|l|l|l|l|l|l|}
+			\hline
+			$MML$&$A\_Train$ & $R\_Train\_0 $ & $R\_Train\_1$ & $A\_Test$ & $R\_Test\_0 $ & $R\_Test\_1$\\	
+			xgboost & 100.0 & 100.0 & 100.0 & 71.19366022783557 & 71.15682371156824 &  71.20428872295615 \\
+			\hline
+			svm & 69.99085086916743 & 69.06474820143885 & 70.94972067039106 & 65.24517087667162 & 73.58991373589913 & 62.83744974152786 \\
+			\hline
+			knn & 81.15279048490393 & 85.97122302158273 & 76.16387337057728 & 65.57701832590391 & 74.85069674850698 & 62.901270023613506 \\
+			\hline
+			ANN & 53.06495882891126 & 51.2589928057554 & 54.93482309124767 & 50.208023774145616 & 45.67573545675735 & 51.515731699534115 \\
+			\hline
+			AdBoost & 83.71454711802379 & 88.3093525179856 & 78.95716945996276 & 66.61218424962853 & 73.76686573766865 & 64.5478333014232 \\
+			\hline
+			DTree & 100.0 & 100.0 & 100.0 & 66.84992570579494 & 68.83432868834328 & 66.27736294594422 \\
+			\hline
+			RForest & 99.90850869167429 & 100.0 & 99.81378026070763 & 72.26349678058445 & 72.99270072992701 & 72.05309847469525 \\		
+			\hline
+		\end{tabular}
+	\end{table}
+
+
+
+\end{document}

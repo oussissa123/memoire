@@ -3,48 +3,334 @@
 \usepackage[T1]{fontenc}
 \usepackage{babel}
 \usepackage[autolanguage]{numprint}
+
 \usepackage[backend=bibtex]{biblatex}
 \usepackage{csquotes}
 \addbibresource{mabib.bib}
+
 \usepackage{graphicx}
 \usepackage{wrapfig}
 \usepackage{lipsum}
 \usepackage{float} 
 \usepackage{multirow}
+\usepackage{hyperref}
+
+\hypersetup{							% Information sur le document
+	pdfauthor = {Ousmane Issa},			% Auteurs
+	pdftitle = {Analyse des données astronomiques - Estimation du redshift photométrique et la classification des supernovas à partir des données photométriques en séries temporelles
+		},			% Titre du document
+	pdfsubject = {Mémoire de Projet},		% Sujet
+	pdfkeywords = {Redshift, supernova, apprentissage profond, apprentissage automatique},	% Mots-clefs
+	pdfstartview={FitH}}					% ajuste la page à la largueur de l'écran
+%pdfcreator = {MikTeX},% Logiciel qui a crée le document
+%pdfproducer = {}} % Société avec produit le logiciel
+
 
 \begin{document}
 
-\begin{titlepage}
-    \begin{center}
-        \LARGE \textbf{Photo-z estimation by Deep learning}\\
-        \large \textit{<<Aproach by images>>}
-    \end{center}
+%régler l'espacement entre les lignes
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+%page de garde
+\input{./title.tex}
+
+%\begin{titlepage}
+    %\begin{center}
+    	%\Large Université Clermont Auvergne\\
+    	%\Large Laboratoire Informatique de Modélisation et Optimisation des systèmes (LIMOS) \\
+        %\LARGE \textbf{Analyse des données astronomiques}\\
+        %\large \textit{<< Estimation du redshift photométrique et la classification des supernovas à partir des données photométriques en séries temporelles >>}
+%    \end{center}
     
-    \begin{center}
-        \Large \textbf{Présenté par:} \textit{Ousmane Issa}\\
-        \Large \textbf{Sous la direction de:} \textit{  Pr. Engelbert Mephu Nguifo}
-    \end{center}
-\end{titlepage}
+ 
+%    \begin{Large}
+%        \noindent \textbf{Présenté par:} \textit{Ousmane Issa}\\
+        
+%        \noindent \textbf{Encadreur:} \textit{Pr. Engelbert Mephu Nguifo}\\
+        
+%        \noindent \textbf{Tuteur pédagogique:} \textit{Dr. KERIVIN Hervé}\\
+%    \end{Large}
+%\end{titlepage}
+
+\section*{\textit{Résumé}}
+Pendant ce stage nous essayons de répondre à deux problématiques dans le domaine de l'astronomie sans utilisation des expérimentations couteuse du domaine physique (spectroscopie). Dans un premier temps nous tentons de réduire l'erreur d'estimation du redshift à partir des images du ciel prises directement. En effet l'estimation précise de ce composant physique sans expérimentations physiques, qui nous permet de connaitre beaucoup des paramètres cosmologiques tels que la distance de galaxies par rapport à la terre ou leurs vitesses de mouvement, reste toujours une grande question ou un défis à relever. Beaucoup d'approches ont été étudiés \cite{meuphirim, isanto, Narciso, adrian, photoSED}, nous essayons une approche dans laquelle nous estimons le redshift à partir des images directes du ciel en utilisant les techniques de l'apprentissage profond (ce choix est fait sur la base du succès de ces techniques en vision artificielle \cite{adavencedCNN} et en détection des motives \cite{rcnn} ces dernières années) et quelques algorithmes de l'apprentissage automatique. Dans un second temps, nous participons à une compétition de classification des supernovas. Dans ce second travail nos données ne sont pas de nature figée comme les images mais des données sous forme de séries qui capturent la quantité lumineuse dans le temps (courbe lumineuse) lors de l'explosion d'une étoile (supernova). Nous appliquons un ensemble de techniques de la fouille de données pour les séries temporelles afin d'essayer de minimiser les faux catégorisés et obtenir une meilleure fonction de classification de supernovas. 
+\section*{\textit{Abstract}}
+
+\section*{\textit{Remerciements}}
 
 \tableofcontents
+\listoffigures
+\listoftables
+
+\thispagestyle{empty}
+\setcounter{page}{0}
+
+\chapter*{Introduction}
+Ces dernières années plusieurs travaux ont essayé d'estimer le redshift en minimisant l'erreur d'estimation à travers différents ensembles de données, parmi ces travaux on peut citer \cite{photoredSDSS, stack, meuphirim, isanto}. L'obtention du redshift à partir des expérimentations physique (spectroscopie) est la méthode la plus exacte pour estimer le redshift mais couteuse et consommateur de temps. Pendant plus dix sept ans, SDSS \cite{sdss} a collectée plus de trois millions des images d'objets astronomiques dont un sous ensemble a également les redshift correspondants qui sont de la spectroscopie. SDSS opére dans cinq filtres différentes et a survolé un tiers du ciel en utilisant un télescope optique de 2.5 mètres de diamètre. Toutes ces données photométriques dont une partie est déjà étiquetée par son redshift, ouvre un grand horizon à l'analyse, à l'apprentissage supervisé et non supervisé pour mettre au point une fonction partant de l'espace de l'ensemble des ces données à l'ensemble de l'espace du redshift.  
 
 
-\section*{\textit{Résumé:}}
+La précision sur l'estimation de l'allongement de la longueur d'onde (redshift) des corps cosmologiques est une condition nécessaire pour la réussite des missions astronomiques comme par exemple Euclid mission \footnote{http://sci.esa.int/euclid/}. Ce composant physique nous permet non seulement de connaitre la vitesse de mouvement des corps célestes mais également la distance les séparant de la terre. L'obtention d'une valeur précise du redshift des corps célestes très éloignes (quazars) de nous, reste toujours un défit pour les scientifiques, en effet on reçoit moins de lumière de ces corps, ce qui rend la précision de leurs estimations très difficile. Dans le sens toujours de capturer profondément la lumière de corps eloignés, le projet du large télescope LSST est né. LSST opère dans 6 bandes de longueurs d'ondes différentes, son objectif principale est de faire 10 ans de survol du ciel pour générer jusqu'à 200 petabyte des images \footnote{https://www.lsst.org/}. Ce qui va permettre aux astronautes et data scientistes une opportunité d'analyse profonde mais également c'est la naissance d'un nouveau chalenge d'analyse.  
 
-\section*{\textit{Abstract:}}
+L'apprentissage profond a fait ses preuves surtout dans la vision artificielle\cite{im1, im2} ces quatre dernières années mais aussi dans la détection des motifs et la segmentions des images \cite{rcnn}. Le réseau convolutif a été testé également sur les images de la SDSS DR12 en le couplant avec la densité gaussienne mélangée pour estimer le redshift \cite{isanto}, et les auteurs ont obtenu des bons résultats. Nous allons travailler avec les images de la version 13 de la base DR de SDSS dans une configuration différente des images du papier \cite{isanto}, en utilisant un réseau convolutif sans le coupler avec la densité gaussienne mélangée, mais d'autres algorithmes de l'apprentissage automatiques seront testés également. 
+
+Dans ce travail, nous essayons de répondre dans un premier temps à un problème d'estimation au quel beaucoup d'astronomes, data scientistes et statisticiens ont essayé de répondre : "Estimer l'augmentation de la longueur d'onde (redshift) de corps cosmologiques due à l'expansion de l'univers à partir des données photométriques". Dans le second temps, nous essayons de trouver un modèle ou un algorithme permettant de faire la classification des supernovas à partir des données photométriques en série temporelle provenant du LSST. 
+
+Ce papier est organisé comme suit:
+\begin{itemize}
+	\item [*] Une section dédiée à la présentation du laboratoire LIMOS au sein duquel j'ai effectué ce stage.
+	\item[*]  Une première partie consacrée à l'estimation du redshift.
+	\begin{itemize}
+		\item Le chapitre 1 est consacré à l'état de l'art concernant l'estimation du redshift.
+		\item Le chapitre 2 est consacré aux différents modèles utilisés.
+		\item Le chapitre 3 présente les résultats obtenus.
+		\item cette partie se termine par une conclusion
+	\end{itemize}
+	\item[*]  Une seconde partie concernant la classification des supernovas. Après une présentation du contexte, nous continuons par les chapitres restants.
+	\begin{itemize}
+		\item Le chapitre 4 est consacré aux données et les différents algorithmes d'analyse utilisés. Dans ce chapitre nous présentations également nos expérimentations et résultats.
+		\item La partie se termine par une conclusion.
+	\end{itemize}
+	\item[*] Le papier se termine par une conclusion et perspectives
+\end{itemize}      
+
+%\include{introduction_resume_abstract}
+\section*{Présentation du laboratoire LIMOS} 
+
+Le Laboratoire d'Informatique, de Modélisation et d'Optimisation des Systèmes (LIMOS) est une Unité Mixte de Recherche (UMR 6158) en informatique, et plus généralement en Sciences et Technologies de l'Information et de la Communication (STIC).
+
+Le LIMOS est principalement rattachée à l'Institut des Sciences de l'Information et de leurs Interactions (INS2I) du CNRS, et de façon secondaire à l’Institut des Sciences de l'Ingénierie et des Systèmes (INSIS). Il a pour tutelles académiques l’Université l'université Clermont Auvergne et l'Ecole Nationale Supérieure des Mines de Saint-Etienne (EMSE), et comme établissement partenaire l'Institut Français de Mécanique Avancée (IFMA). Le LIMOS est membre des labex IMOBS3 et ClercVolc et de la fédération de recherche en Environnement FR 3467 (qui regroupe 17 laboratoires). Il est membre associé de la fédération MODMAD (MODélisation Mathématique et Aide à la Décision, FED 4169) portée par Université Jean Monnet de Saint-Etienne.
+
+Ses principaux thèmes de recherche sont: 
+\begin{itemize}
+\item[*] Optimisation combinatoire et continue 
+\item[*] Recherche opérationnelle, Systèmes de production ; Logistique 
+\item[*] Algorithmique des graphes et des treillis 
+\item[*] Images et apprentissage 
+\item[*] Modélisation et simulation 
+\item[*] Grandes masses de données ; Fouille de données ; Interopérabilité des systèmes d’information
+\item[*] Réseaux de Capteurs, confiance numérique
+\end{itemize}
+
+Pendant ce stage, j'étais intégré à un sous groupe appelé \textbf{miners} dont son thème de recherche est la fouille de données.
+
+%le diagramme de gantt
 
 
-\include{introduction_resume_abstract}
-
-\part{Photo-z estimation by Deep learning \\
-        \large \textit{<<Aproach by images>>}}
-
+\part{Estimation du redshift photométrique par apprentissage profond et à partir des images}
+ %       \large \textit{<<Aproach by images>>}}
+ Dans cette première partie du mémoire, nous allons présenter le travail que nous avons fait sur l'estimation du redshift par les techniques de l'apprentissage automatique et plus précisément l'apprentissage profond et le boosting. Avant de présenter l'état de l'art et les algorithmes utilisés, nous présentons d'abord le contexte du travail et définir quelques termes. 
 \include{context_part1}
 \include{existant_part1}
 \include{modeles}
 \include{experimentation_part1}
 
-%\part{Supernovae classification by time series}
+\section*{Conclusion}
+Dans cette première partie, nous avons essayé d'estimer le redshift à partir des modèles de l'apprentissage automatique tels que xgboost et le réseau de neurones convolutif qui est une architecture de l'apprentissage profond. Nous avons mis au point également une architecture de réseau convolutif qui s'adapte mieux à nos données pour l'estimation du redshift dont les hyper-paramètres ont été calibrés à la main. Certains hyper-paramètres du modèle de xgboost ont été adaptés en utilisant un petit échantillon de données pour calculer le score des validations croisées à partir de la librairie sciklearn (cross\_val\_score).  
+
+\part{Classification des supernovas à partir des données photométriques en séries temporelles}
+\section*{Contexte}
+La plupart des sources observées dans le ciel nocturne évoluent pendant une très longue période de temps (des millions, voire des milliards d'années), ce qui les rend pratiquement statiques par rapport à l'échelle de temps d'une vie humaine. Cependant, ce n'est qu'une description partielle des événements possibles qui se déroulent dans l'Univers. Pendant longtemps, les astronomes ont enregistré des événements d'observation dont la durée de vie atteint des jours ou des mois. Plus récemment, l'avènement des télescopes modernes a élargi \cite{lsst} notre capacité de détecter les événements astronomiques qui se produisent de quelques secondes à plusieurs années. Ces phénomènes sont appelés transitoires et peuvent concerner les chercheurs travaillant dans le domaine de l'astronomie temporelle \cite{ramps}. C'est dans ce sens qu'une compétition de classification de supernova est née.
+
+Dans cette deuxième partie du mémoire je présente ma participation à une compétition astro-physique concernant l'identification des transits (\textbf{supernova}) à partir des données de simulation de LSST sous forme de \textbf{série temporelle}. Il est demandé de mettre au point une fonction, algorithme ou modèle, qui, en prenant une série de données mesurée (courbe lumineuse), permet de donner son type de supernova. Pour une raison d'obtention d'un estimateur fiable, plusieurs contraintes ont été imposées sur les données. 
+\subsection*{Supernova}
+Un supernova est l'explosion cataclysmique d'une étoile qui, pendant un temps, peut briller plus vivement qu'une galaxie entière composée de centaines de milliards d'étoiles.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm, height=3cm]{images/supernova.jpg}
+	\caption{Illustration  de l'explosion d'une étoile (supernova)}
+\end{figure}
+\subsection*{Série temporelle}
+Une série temporelle est un ensemble ordonné de valeurs qui présente l'évolution d'un sujet au cours du temps. Ces valeurs sont séparées les unes des autres par la même valeur d'intervalle.
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=10cm, height=3cm]{images/series.png}
+	\caption{Exemple d'une série temporelle}
+\end{figure}
+%\subsection*{Existants}
+\subsection*{Références de mesure de bonnes prédictions}
+Nous allons utiliser dans cette deuxième partie deux principales références pour analyser l'exactitude et l'aptitude du modèle à bien prédire la bonne classe d'un supernova à partir de sa courbe lumineuse.
+\subsubsection{Accuracy}
+L'accuracy  permet de donner la proportion des éléments bien catégorisés, elle est définie formellement comme suit: $accuracy = \frac{\sum_{i = 1}^{n} fe(Y\_true_i, Y\_pred_i)}{\#Y\_true}$ où  $Y\_true$ est les vraies classes des éléments , $Y\_pred$ aux classes prédites par le modèle et $\#Y\_pred$ correspond au nombre total d'éléments dans $Y\_pred$, $fe(a, b) = 1$ si $a = b$ et $0$ sinon.
+\subsubsection{rappel (Recall)}
+Le rappel donne la proportionnalité de la bonne prédiction des éléments d'une classe particulière. Soit $c$ la classe à estimer son rappel, $rappel(c) = \frac{\sum_{i = 1}^{k} f_c(Y\_pred_{c_i}, c)}{\#Y\_pred_c}$ où $Y\_true_c$ est la liste des éléments prédits juste pour la classe c, $f_c (x, c) = 1$ si $x == c$ et $f_c (x, c) = 0$ sinon.  
+\chapter{Données et algorithmes utilisés}
+Dans ce chapitre nous allons décrire nos données et nos techniques de pré-traitement ainsi que les algorithmes d'analyse utilisés après ces pré-traitements pour la classification.
+\section{Données}
+
+Les données sont sous la forme des séries, dans quatre bandes de longueurs d'onde différentes donc de séries multivariées et de taille différentes. Ces séries ont des grilles temporelles très variées. Ce qui nous oblige à faire l'estimation de plusieurs valeurs manquantes ou d'estimer les valeurs de chaque série sur une grille spécifique. Pour cela, nous allons utiliser un ensemble de modèles estimateurs: le modèle paramétrique d'estimation de la courbe lumineuse (série) qui a été proposée dans \cite{bazin}, l'approximation polynomiale et l'estimation par processus gaussien. Parmi tout ces modèles le modèle proposé dans \cite{bazin} est le plus intéressant et le plus proche.  
+
+%modele de bazin
+La fonction paramètrique de Bazin et al. définie dans \cite{bazin} est la suivante :
+\begin{center}
+	$f(t) = A\frac{exp{\left(-\frac{t-t_0}{t_{fall}}\right)}} {1+exp{\left(\frac{t-t_0}{t_{rise}}\right)}} + B$
+\end{center}
+Les cinq paramètres à estimer pour chaque courbe lumineuse dans chaque bande sont $A$, $B$, $t0$, $t_{fall}$ et $t_{rise}$.   
+
+Dans un premier temps, nous avons essayé d'estimer les valeurs manquantes par le modèle de Bazin dans \cite{bazin} et après utiliser ce même modèle pour définir une grille plus petite par rapport à la grille formée par l'estimation des valeurs manquantes. En effet l'estimation de valeurs manquantes entraine une grille temporelle de taille de plus de 600, ce qui peut rendre l'utilisation de certains algorithmes plus difficile. En plus nous essayé d'analyser les composants directement à partir des paramètres du modèle de Bazin.
+
+\begin{figure}[H]
+	%[width=10cm, height=3cm]
+	\centering
+	\includegraphics[scale = 0.8]{images/calibre_light.PNG}
+	\caption{Estimation des valeurs d'une série dans les quatre bandes}
+\end{figure}
+
+Plusieurs contraintes ont été imposées lors de la validation croisée c'est-à-dire: l'ensemble d'apprentissage est largement plus petit que l'ensemble de test (ensemble de test est 20 fois plus grand que celui de l'apprentissage) et il est également biaisé. Une classification binaire est faite entre la catégorie 0 de supernovas et les autres catégories. 
+
+%distrubutioin affichage
+
+\begin{figure}[H]
+	%[width=10cm, height=3cm]
+	%\centering
+	\includegraphics[scale = 0.6]{images/distribution_learn_supernova.PNG}
+	\includegraphics[scale = 0.6]{images/distribution_test_supernova.PNG}
+	\caption{Distribution de la classe de catégorie 0 par rapport à la distribution des autres catégories après transformation}
+\end{figure}
+
+\begin{figure}[H]
+	%[width=10cm, height=3cm]
+	%\centering
+	\includegraphics[scale = 0.6]{images/distribution_learn_supernova_all.PNG}
+	\includegraphics[scale = 0.6]{images/distribution_test_supernova_all.PNG}
+	\caption{Distribution des classes avant transformation}
+\end{figure}
+
+\section{Différents algorithmes}
+Dans la littérature, il existe plusieurs méthodes de classification des données en série temporelle, dont la plupart cherche une distance de non-similarité ou de similarité pour séparer une catégorie des autres \cite{timereview}. Une fois qu'une distance de similarité est définie, la classification est faite en considérant la distance comme caractéristiques. Il existe également d'autres techniques qui essayent d'extraire des caractéristiques directement à partir de la série elle même au lieu d'essayer de séparer globalement sur l'ensemble des séries pour en tirer une série ou une sous série qui divise mieux les classes. 
+
+Ces algorithmes de classification ont été catégorisés en six classes:
+\begin{itemize}
+	\item[1. ] \textbf{Totalité de séries}, cette méthode calcule la similarité ou non similarité entre deux séries en considérant la taille totale de ces dernières et en les prenant comme deux vecteurs. Des techniques de calcul de similarité comme la distance euclidienne peuvent ainsi être appliquées directement sur les séries. Cette méthode ne peut être utilisé dans un cas où les séries ne sont pas de même taille.   
+	\item [2. ] \textbf{Intervalle}, elle sélectionne un ensemble d'intervalles de la série, au lieu de considérer totalement la série, pour mesurer la similarité ou non similarité entre deux séries.
+	\item [3. ] \textbf{Shapelets}, un shapelet est une sous série, dans cette famille de classification un shapelet qui sépare mieux les classes est cherché au long des série et ce shapelet est gardé comme référence pour le calcul de distance par rapport aux séries.
+	\item [4. ] \textbf{Dictionnaire} Cette famille de méthode de classification de série se différencie de la famille des shapelets par le fait qu'on considère à ce niveau la fréquence ou la répétition d'une sous série comme caractéristiques au lieu de la présence ou non de cette sous série. 
+	\item[5. ] \textbf{Combinée} Combine un sous ensemble des méthodes ci-dessus pour former un seul classificateur.
+	\item[6. ] \textbf{Basée modèle} Cette dernière méthode transforme les séries en des modèles et ces modèles sont comparés comme caractéristiques. C'est cette méthode qui a donné de meilleurs résultats parmi celles déjà testées. 
+\end{itemize}    
+Pour plus de détails sur ces méthodes, le lecteur se peut référer au papier \cite{timereview}.\\ 
+
+En plus de ces algorithmes d'extraction des caractéristiques, les algorithmes de classification existants peuvent être utilisés. Nous avons alors testé six algorithmes de la fouille de données que nous décrivons ci-dessous.
+\begin{itemize}
+	\item[*] \textbf{Arbre de décision}, la méthode de classification basée sur un arbre de décision est un méthode qui, prenant un ensemble de données appelé l'ensemble d'apprentissage, construit une structure sous forme d'arbre dont les nœuds sont les attributs (caractéristiques ou features en anglais) des éléments de l'ensemble et les feuilles sont les étiquettes ou les différentes classes. Dans notre cas les caractéristiques sont la distance de chacune des séries dans les quatre bandes d'un supernova par rapport aux séries sélectionnées (selon la bande) comme meilleurs séparateurs ou les paramètres du modèle bazin et al. utilisés dans les quatre bandes quand cette dernière est utilisée comme modèle séparateur. Cet arbre est transformé en plusieurs règles qui ne sont que les différents chemins de la racine de l'arbre aux feuilles. Ces règles sont utilisées pour classifier un nouveau élément (individu). Plusieurs algorithmes pour construire cet arbre ont été étudiés \cite{decisionTree}.
+	\item[*] \textbf{Foret aléatoire}, comme boosting la méthode basée sur les forets aléatoires sont des méthodes ensemblistes. Contrairement aux boosting qui corrige l'erreur de manière séquentielle sur toutes les données pour former des petits modèles appris successivement, le foret aléatoire divise les données de l'ensemble de départ aléatoirement en de partitions de même distribution et sur chaque partition un arbre de décision est formée. Un nouveau élément est classifié selon la classe majoritaire prédite \cite{randomForest}.
+	    
+	\item[*] \textbf{Boosting} voir la section \ref{section22} du chapitre \ref{chapitre2} 
+	\item[*] \textbf{Réseau de neurones} voir la section \ref{section12} du chapitre \ref{chapitre2}
+	\item[*] \textbf{K plus proches voisins}, contrairement aux modèles ci dessous, la méthode de k plus proches voisins ne met au point une bonne fois pour tous un classificateur à partir des données d'apprentissage mais utilise ces données d'apprentissage lors de classification d'un élément $x$ pour trouver k éléments qui ressemblent à $x$ et associé à cet $x$ la classe de ces k éléments \cite {knn}. 
+	\item[*] \textbf{Régression logistique}, la régression logistique \cite{rl} est un modèle linéaire qui, à partir des caractéristiques d'un élément (variables explicatives), forme une combinaison linéaire qui sera utilisée pour calculer une probabilité d'appartenance à chacune des classes (variable à expliquer). La classe ayant la probabilité la plus forte est choisie. 
+\end{itemize}
+
+\section{Expérimentations et résultats}
+%description des résultats
+	%Dans la suite du document les conventions suivantes sont adoptées : \\
+%Accuracy sur l'ensemble de l'apprentissage est noté $A\_Train$, accuracy sur l'ensemble de test est noté $A\_Test$, le rappel de la classe c sur l'ensemble d'apprentissage est $R\_Train\_c$ et celui de test est noté $R\_Test\_c$ et $MML$ correspond au modèle de l'apprentissage automatique utilisé.  \\
+Dans cette section nous présentons d'abord brièvement les algorithmes et techniques de classification utilisés puis  nos résultats selon la technique utilisée.
+La taille de l'ensemble d'apprentissage est 1093 et celui du test est 20190, 556 sont d'une classe et 537 d'une autre parmi l'ensemble d'apprentissage.
+\subsection{SAX}
+Symbolic Aggregate Approximation (SAX) est une méthode de la famille Dictionnaire. La méthode Sax a été proposée dans \cite{sax} et eteind la méthode PAA (Piecewise Aggregate Approximation of time series). PAA résume une série de taille $n$ en une autre de taille $p$ ($p<<n$) en divisant la série en p sous série d'à peu prés même taille et chaque sous série  est remplacée par sa moyen. SAX améliore PAA en discrétisant la série obtenue par un ensemble fini de symboles qu'on appelle alphabet. Pendant nos expérimentations SAX a été testé après plusieurs transformations ou sans transformation des données. Cette méthode a l'avantage de la dimension réduite, ainsi elle rend l'application de différentes méthodes de fouilles plus légère, elle est beaucoup plus utilisée en biologie en fouille de texte. SAX a besoin de définir en plus de l'ensemble des alphabets, un ensemble ordonné de réels appelé les points de coupure. Cet ensemble permet de transformer chaque valeur de la série PAA en une lettre contenue dans l'ensemble des alphabets. Pour faciliter la mise au point de l'ensemble des points de coupure, les séries sont mises sous la forme normale de moyenne nulle et de déviation standard unitaire et ces points de coupure divise la courbe de données normalisées en de régions de probabilités égales et chaque région correspond à une lettre. Le SAX transformé obtenu est appelé mot (word en anglais). Quand la d'une série dépasse $n$ alors une fenêtre de taille $n$ traverse le long de la série et forme un ensemble de mots.\\
+ 
+Soit $X = (x_1, ..., x_n)$ une série et $\bar{X} = (\bar{x_1}, ..., \bar{x_p})$ son PAA correspondant, alors $\bar{x_i} = \frac{p}{n} \sum \limits_{j=\frac{n}{m}(i-1)+1}^{\frac{n}{m}i} x_j$.
+Soit $B = {\beta_1, ..., \beta_p}$ l'ensemble ordonné des points de rupture, $\widehat{X} = (\widehat{x_1}, ..., \widehat{x_p})$ le SAX correspondant à la série $X$ alors $\widehat{x_i} = alphabet_j $ et $\bar{x_i} \in [\beta_{j-1}, \beta_j)$.
+Soit $\widehat{A}$ et $\widehat{B}$ deux séries sous la forme SAX, la similarité entre ces deux séries est obtenue par la formule suivante:\\
+$Dist(\widehat{A}, \widehat{B}) = \sqrt{\frac{n}{p} \sum \limits_{i = 1}^p dist(\widehat{A}_i, \widehat{B}_i)}$  \hspace{2cm} où  \hspace{1cm}
+$$dist(a, b) = \left \{ \begin{array}{ll} 0 & si \hspace{0.5cm} |a-b|\leq 1 \\ B_{max(a, b)-1} - B_{min(a, b)-1} & sinon. \end{array}\right.$$
+L'entropie est utilisée comme critère pour chercher la série qui sépare mieux les différentes classes après le calcul de la similarité entre cette série et le reste des séries. Après obtention de cette série la distance est utilisé comme critère de classification dans les quatre bandes en appliquant les algorithmes classique de la fouille de données.\\
+
+Toutes les colonnes sont dans en pourcentage.
+
+\subsubsection*{Application de SAX sans estimation des données manquantes sans hachage aléatoire}
+
+\begin{table}[H]
+	\begin{tabular} {|l|l|l|l|}%{|l|l|l|l|l|l|l|}
+		\hline	
+		%$MML$&$A\_Train$ & $R\_Train\_0 $ & $R\_Train\_1$ & $A\_Test$ & $R\_Test\_0 $ & $R\_Test\_1$\\
+		$Algo$ & $Accuracy\_Test$ & $Rappel\_Test\_0 $ & $Rappel\_Test\_1$\\
+		\hline
+		AdaBoost & 44.01261627285363 & 33.7636476000824 & 80.03861935795318 \\
+		\hline
+		XGBoost & 42.50507858441142 & 31.216095584700952 & 82.18682114409847  \\
+		\hline
+		Decision Tree & 46.34341922377846 & 38.99608597129712 & 72.16992517499396 \\ 
+		\hline
+		Random Forest & 42.55853736768952 & 31.772299663530866 & 80.47308713492637 \\
+		\hline			
+	\end{tabular}
+\end{table}
+
+
+\subsubsection{SAX représentation sans estimation des données manquantes avec hachage aléatoire}
+\begin{table}[H]
+	\begin{tabular} {|l|l|l|l|}%{|l|l|l|l|l|l|l|}
+		\hline
+		%$MML$&$A\_Train$ & $R\_Train\_0 $ & $R\_Train\_1$ & $A\_Test$ & $R\_Test\_0 $ & $R\_Test\_1$\\	
+		$Algo$ & $Accuracy\_Test$ & $Rappel\_Test\_0 $ & $Rappel\_Test\_1$\\
+		\hline
+		AdaBoost & 48.85598203784882 & 45.58126759596237 & 60.36688390055516 \\
+		\hline
+		XGBoost & 49.395915748957556 & 46.57694156423814 & 59.30485155684286 \\
+		\hline
+		Decision Tree & 56.928258312840796 & 60.413376364760005 & 44.677769732078204 \\
+		\hline
+		Random Forest & 48.85063615952101 & 45.91087001304676 & 59.184166063239196 \\		
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsubsection{SAX représentation avec estimation des données manquantes avec hachage aléatoire}
+Chaque série est remplacée par les valeurs obtenues, en partant de son temps de début à son temps final et en se déplaçant à chaque fois d'une unité et ensuite soustraire ce temps de début à cet ensemble de temps ordonné obtenu, après adaptation du modèle de \cite{bazin} à cette série. Ce qui nous permet d'avoir les séries sur la même grille temporelle sans distorsion mais on a toujours des séries qui sont plus longues que d'autres.      
+\begin{table}[H]
+	\begin{tabular} {|l|l|l|l|}%{|l|l|l|l|l|l|l|}
+		\hline
+		%$MML$&$A\_Train$ & $R\_Train\_0 $ & $R\_Train\_1$ & $A\_Test$ & $R\_Test\_0 $ & $R\_Test\_1$\\
+		$Algo$ & $Accuracy\_Test$ & $Rappel\_Test\_0 $ & $Rappel\_Test\_1$\\
+		\hline
+		Decision Tree & 64.1491679873217 & 73.47798340778557 & 31.822202565236623 \\
+		\hline
+		XGboost & 64.13431061806656 & 72.99936183790683 & 33.41441839893852 \\
+		\hline
+		AdaBoost & 65.18423137876387 &  74.71601786853861 & 32.15391419725785 \\
+		\hline
+	\end{tabular}
+\end{table}
+
+\subsection{La méthode basée modèle}
+Dans cette dernière expérimentation le modèle de \cite{bazin} est utilisé en tant qu'un critère de séparation des classes et non pour une estimation des données manquantes. Puisque déjà les données de source contiennent des erreurs et qu'une estimation d'une valeur manquante par rapport aux autres entraine encore plus des erreurs. Après adaptation de ce modèle à une série, les paramètres $(A, B, t0, t_{fall}, t_{rise})$ sont gardés comme caractéristiques. Parmi ces cinq paramètres, il y a les quatre derniers de la bande $i$ et ceux de la bande $z$ qui séparent mieux les classes.  
+
+\begin{table}[H]
+	\begin{tabular} {|l|l|l|l|}%{|l|l|l|l|l|l|l|}
+		\hline
+		%$MML$&$A\_Train$ & $R\_Train\_0 $ & $R\_Train\_1$ & $A\_Test$ & $R\_Test\_0 $ & $R\_Test\_1$\\	
+		$Algo$ & $Accuracy\_Test$ & $Rappel\_Test\_0 $ & $Rappel\_Test\_1$\\
+		\hline
+		%XGboost & 71.19366022783557 & 71.15682371156824 &  71.20428872295615 \\
+		XGboost & 75.4135710747895 & 74.65162574651626 & 75.63341629970004 \\
+		\hline
+		%SVM & 65.24517087667162 & 73.58991373589913 & 62.83744974152786 \\
+		%\hline
+		%k plus proche voisin & 65.57701832590391 & 74.85069674850698 & 62.901270023613506 \\
+		k plus proche voisin  & 66.20108964834075 & 79.27449679274497 & 62.42899993617972 \\
+		\hline
+		%Réseau de neurone & 50.208023774145616 & 45.67573545675735 & 51.515731699534115 \\
+		Réseau de neurone & 76.76572560673601 & 64.52112364521123 & 80.29867892016082 \\
+		\hline
+		%AdaBoost & 66.61218424962853 & 73.76686573766865 & 64.5478333014232 \\
+		AdaBoost&73.49678058444775&78.7657597876576&71.97651413619248\\
+		\hline
+		%Decision Tree & 66.84992570579494 & 68.83432868834328 & 66.27736294594422 \\
+		Decision Tree & 69.34621099554235 & 71.28953771289538 & 68.78550003191015\\
+		\hline
+		\textbf{Random Forest}&\textbf{76.3893016344725} & \textbf{79.03118779031188} & \textbf{75.62703427149148} \\
+		%\textbf{Random Forest} & \textbf{72.26349678058445} & \textbf{72.99270072992701} & \textbf{72.05309847469525} \\
+		\hline
+		Régression logistique & 69.172857850421 & 71.06834771068348 & 68.62594932669602  \\		
+		\hline
+	\end{tabular}
+
+\end{table}
+
+
+
+\section*{Conclusion}
+Dans cette deuxième partie du mémoire, nous avons présentons notre participation au challenge de classification des supernova. Nos meilleurs résultats ont été obtenus en appliquant la méthode basée modèle. Le modèle définie dans \cite{bazin} pour estimer la courbe lumineuse des supernovas a été utilisée en tant que modèle de séparation des classes. D'autres méthodes ont été testées mais leurs résultats n'ont pas été très intéressants.
 %\include{context_part2}
 %\include{existant_part2}
 %\include{donnees_part2}
@@ -55,12 +341,8 @@
 
 \chapter*{Conclusion et perspectifs}
 
-\chapter*{Appendix}
 \include{appendix}
 
-
-\printbibliography
-
-
+%\printbibliography
 
 \end{document}

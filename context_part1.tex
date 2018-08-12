@@ -3,7 +3,7 @@ Le redshift est l'augmentation de la longueur d'onde d'un objet lors de l'applic
 \begin{figure}[H]
 	\includegraphics[scale=0.3]{images/reshift.png}
 	\caption{illustration du redshift et blueshift}
-	\label{red_blue}
+	\label{redblue}
 \end{figure}
 Le reshift est noté $z$ et se manifeste quand l'objet en mouvement tout en s'éloignant de l'observateur (effet dopler) ou il est du à l'expansion de l'univers (redshift cosmologique) ou due à la gravitation (redshift gravitationel). Dans notre cas le redshit qu'on essaie d'estimer correspond au redshift cosmologique et il s'obtient de la manière suivante: $1 + z = \frac{\lambda_{observé}}{\lambda_{emis}}$ où $\lambda_{observé}$ et $\lambda_{observé}$ sont respectivement la longueur d'onde observée et celle émise. La loi de Huble établit une relation entre la distance et le redshift cosmologique comme suit $v = H_0d = cz$ où $d$ est la distance, $v$ la vitesse, $c$ la vitesse de la lumière, $H_0$ la constance de Huble et $z$ le redshift cosmologique.
 %\section*{Calcul du redshift}
@@ -31,13 +31,12 @@ Il existe plusieurs paramètres pour définir la qualité de prédiction du reds
 $\Delta z_{norm} = \frac{\Delta z}{z_{spec} + 1}$ \\
 Dans ce travail nous utilisons principalement quatre paramètres de mesure de qualité de prédiction du redshift: \\
 \begin{itemize}
-	\item Le biais qui est la moyenne de l'ensemble des erreurs noté %$\mu(\Delta z)$ ou
+	\item Le biais qui est la moyenne de l'ensemble des erreurs notée %$\mu(\Delta z)$ ou
 	 $\mu(\Delta z_{norm})$ pour l'erreur normalisée. \\ %$\mu(\Delta z) = \frac{\sum_{i=1}^{n} \Delta z_i}{n}$ et
-	 $\mu(\Delta z_{norm}) = \frac{\sum_{i=1}^{n} \Delta z_{norm_i}}{n}$
-	\item Le standard déviation noté $\sigma (\Delta z_{norm}) = \sqrt{\frac{\sum_{i = 1}^{n} (\Delta z_{norm_i} - \mu(\Delta z_{norm}) )^2}{n}}$ 
+	 $\mu(\Delta z_{norm}) = \frac{\sum \limits_{i=1}^{n} \Delta z_{norm_i}}{n}$
+	\item Le standard déviation noté $\sigma (\Delta z_{norm}) = \sqrt{\frac{\sum \limits_{i = 1}^{n} (\Delta z_{norm_i} - \mu(\Delta z_{norm}) )^2}{n}}$ 
 	\item La proportionnalité des outliers/particuliers catastrophiques mesurée par $(\frac{card(|\Delta z_norm| \geq 0.15)}{n})*100$ ou $(\frac{card(|\Delta z_norm| \geq 3\sigma(\Delta z_norm))}{n})*100$ en pourcentage. 
 	\item  Erreur moyenne quadratique (RMSE) qui est similaire à la déviation standard.
-	$RMSE = \sqrt{\frac{\sum_{i=1}^{n} (\Delta z_{norm_i})^2}{n}}$. \\
+	$RMSE = \sqrt{\frac{\sum \limits_{i=1}^{n} (\Delta z_{norm_i})^2}{n}}$. \\
 	Où $n$ est le nombre total de l'échantillon de test, et $card$ est la fonction cardinale.
-	
 \end{itemize}

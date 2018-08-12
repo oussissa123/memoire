@@ -2,70 +2,88 @@
 \babel@toc {french}{}
 \babel@toc {french}{}
 \defcounter {refsection}{0}\relax 
-\contentsline {part}{I\hspace {1em}Photo-z estimation by Deep learning \\ \relax \fontsize {12}{14}\selectfont \textit {<<Aproach by images>>}}{3}
+\contentsline {part}{I\hspace {1em}Estimation du redshift photom\IeC {\'e}trique par apprentissage profond et \IeC {\`a} partir des images}{4}{part.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {1}Travaux existants dans la litt\IeC {\'e}rature}{7}
+\contentsline {chapter}{\numberline {1}Travaux existants dans la litt\IeC {\'e}rature}{9}{chapter.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.1}M\IeC {\'e}thodes bas\IeC {\'e}es sur les mod\IeC {\`e}les (template-based)}{7}
+\contentsline {section}{\numberline {1.1}M\IeC {\'e}thodes bas\IeC {\'e}es sur les mod\IeC {\`e}les (template-based)}{9}{section.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {1.2}M\IeC {\'e}thodes empiriques}{8}
+\contentsline {section}{\numberline {1.2}M\IeC {\'e}thodes empiriques}{10}{section.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {2}Mod\IeC {\`e}les de l'apprentissage automatique}{10}
+\contentsline {chapter}{\numberline {2}Mod\IeC {\`e}les de l'apprentissage automatique}{12}{chapter.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.1}R\IeC {\'e}seau de neurones artificiels}{10}
+\contentsline {section}{\numberline {2.1}R\IeC {\'e}seau de neurones artificiels}{12}{section.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.1}Perception multi-couches (MLP)}{11}
+\contentsline {subsection}{\numberline {2.1.1}Perception multi-couches (MLP)}{13}{subsection.2.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.1.2}Auto-Encoder}{12}
+\contentsline {subsection}{\numberline {2.1.2}Auto-Encoder}{14}{subsection.2.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.2}R\IeC {\'e}seau de neurones convolutifs (CNN)}{13}
+\contentsline {section}{\numberline {2.2}R\IeC {\'e}seau de neurones convolutifs (CNN)}{15}{section.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.1}Couche convolutive}{15}
+\contentsline {subsection}{\numberline {2.2.1}Couche convolutive}{16}{subsection.2.2.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Tiled convolutional network (TCN)}{16}
+\contentsline {subsubsection}{Tiled convolutional network (TCN)}{17}{section*.13}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Transposed convolution ou Deconvolution (TC)}{16}
+\contentsline {subsubsection}{Transposed convolution ou Deconvolution (TC)}{17}{section*.14}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Dilated convolutional neural}{16}
+\contentsline {subsubsection}{Dilated convolutional neural}{17}{section*.15}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Network in network (NiN)}{16}
+\contentsline {subsubsection}{Network in network (NiN)}{17}{section*.16}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Inception module}{17}
+\contentsline {subsubsection}{Inception module}{18}{section*.17}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.2.2}Couche d'agr\IeC {\'e}gation (pooling)}{18}
+\contentsline {subsection}{\numberline {2.2.2}Couche d'agr\IeC {\'e}gation (pooling)}{19}{subsection.2.2.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.3}Boosting}{18}
+\contentsline {section}{\numberline {2.3}Boosting}{19}{section.2.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {2.4}Apprentissage profond}{19}
+\contentsline {section}{\numberline {2.4}Apprentissage profond}{20}{section.2.4}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {2.4.1}Apprentissage par r\IeC {\'e}tro-propagation}{19}
+\contentsline {subsection}{\numberline {2.4.1}Apprentissage par r\IeC {\'e}tro-propagation}{20}{subsection.2.4.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{Optimisation}{19}
+\contentsline {subsubsection}{Optimisation}{20}{section*.18}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{R\IeC {\'e}gularisation}{20}
+\contentsline {subsubsection}{R\IeC {\'e}gularisation}{21}{section*.19}
 \defcounter {refsection}{0}\relax 
-\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats et discussion}{21}
+\contentsline {chapter}{\numberline {3}R\IeC {\'e}sultats et discussion}{22}{chapter.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.1}Donn\IeC {\'e}es}{21}
+\contentsline {section}{\numberline {3.1}Donn\IeC {\'e}es}{22}{section.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.1}Source et nature de donn\IeC {\'e}es}{21}
+\contentsline {subsection}{\numberline {3.1.1}Source et nature de donn\IeC {\'e}es}{22}{subsection.3.1.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{SDSS(Sloan Digital Sky Survey IV)}{21}
+\contentsline {subsubsection}{SDSS(Sloan Digital Sky Survey IV)}{22}{section*.20}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsubsection}{DR13 (database release version 13)}{21}
+\contentsline {subsubsection}{DR13 (database release version 13)}{22}{section*.21}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.1.2}Pr\IeC {\'e}-traitement sur les images}{22}
+\contentsline {subsection}{\numberline {3.1.2}Pr\IeC {\'e}-traitement sur les images}{24}{subsection.3.1.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.2}Configurations techniques}{23}
+\contentsline {section}{\numberline {3.2}Configurations techniques}{24}{section.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.3}Configuration des mod\IeC {\`e}le}{23}
+\contentsline {section}{\numberline {3.3}Exp\IeC {\'e}rimentations}{24}{section.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.1}CNN (type: inception module)}{23}
+\contentsline {subsection}{\numberline {3.3.1}CNN (type: inception module)}{25}{subsection.3.3.1}
 \defcounter {refsection}{0}\relax 
-\contentsline {subsection}{\numberline {3.3.2}Boosting (type: xgboost)}{23}
+\contentsline {subsection}{\numberline {3.3.2}Boosting (type: xgboost)}{27}{subsection.3.3.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.4}Exp\IeC {\'e}rimentions avec CNN}{24}
+\contentsline {subsection}{\numberline {3.3.3}Exp\IeC {\'e}rimentions avec XGBoost}{27}{subsection.3.3.3}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.5}Exp\IeC {\'e}rimentions avec XGBoost}{24}
+\contentsline {part}{II\hspace {1em}Classification des supernovas \IeC {\`a} partir des donn\IeC {\'e}es photom\IeC {\'e}triques en s\IeC {\'e}ries temporelles}{30}{part.2}
 \defcounter {refsection}{0}\relax 
-\contentsline {section}{\numberline {3.6}Discussion}{24}
+\contentsline {subsubsection}{Accuracy}{32}{section*.27}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{rappel (Recall)}{32}{section*.28}
+\defcounter {refsection}{0}\relax 
+\contentsline {chapter}{\numberline {4}Donn\IeC {\'e}es et algorithmes utilis\IeC {\'e}s}{33}{chapter.4}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.1}Donn\IeC {\'e}es}{33}{section.4.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.2}Diff\IeC {\'e}rents algorithmes}{35}{section.4.2}
+\defcounter {refsection}{0}\relax 
+\contentsline {section}{\numberline {4.3}Exp\IeC {\'e}rimentations et r\IeC {\'e}sultats}{37}{section.4.3}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.1}SAX}{37}{subsection.4.3.1}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{SAX repr\IeC {\'e}sentation sans estimation des donn\IeC {\'e}es manquantes avec hachage al\IeC {\'e}atoire}{38}{section*.30}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsubsection}{SAX repr\IeC {\'e}sentation avec estimation des donn\IeC {\'e}es manquantes avec hachage al\IeC {\'e}atoire}{38}{section*.31}
+\defcounter {refsection}{0}\relax 
+\contentsline {subsection}{\numberline {4.3.2}La m\IeC {\'e}thode bas\IeC {\'e}e mod\IeC {\`e}le}{39}{subsection.4.3.2}
